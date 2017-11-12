@@ -27,7 +27,22 @@ namespace BowlingKata.Tests
             Assert.Equal(16, _g.ScoreGame());
         }
 
-            
+        [Fact]
+        public void OneStrikeReturnsAppropriateValue()
+        {
+            // arrage
+            _g.Roll(10); // strike
+            _g.Roll(3);
+            _g.Roll(4);
+
+            // act
+            RollMany(16, 0);
+
+            // assert
+            Assert.Equal(24, _g.ScoreGame());
+        }
+
+
         public void RollMany(int rolls, int pins)
         {
             for (int i = 0; i < rolls; i++)

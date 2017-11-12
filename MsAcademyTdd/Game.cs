@@ -14,22 +14,33 @@
         public int ScoreGame()
         {
             int score = 0;
-            int rollNum = 0;
+            int frameIndex = 0;
 
             for (int frame = 0; frame < 10; frame++)
             {
-                // spare
-                if (rolls[rollNum] + rolls[rollNum + 1] == 10)
+                if (rolls[frameIndex] == 10)
                 {
-                    score += 10 + rolls[rollNum + 2];
+                    score += rolls[frameIndex] + rolls[frameIndex + 1] + rolls[frameIndex + 2];
+                    frameIndex++;
+                }
+                else if (IsSpare(frameIndex)) // spare
+                {
+                    score += 10 + rolls[frameIndex + 2];
+                    frameIndex += 2;
                 }
                 else
                 {
-                    score += rolls[rollNum] + rolls[rollNum + 1];
+                    score += rolls[frameIndex] + rolls[frameIndex + 1];
+                    frameIndex += 2;
                 }
-                rollNum += 2;
+                
             }
             return score;
+        }
+
+        public bool IsSpare(int frameIndex)
+        {
+            return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
         }
     }
 }

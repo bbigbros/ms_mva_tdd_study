@@ -42,6 +42,18 @@ namespace BowlingKata.Tests
             Assert.Equal(24, _g.ScoreGame());
         }
 
+        [Fact]
+        public void PerfectGameReturn300()
+        {
+            // arrage
+            
+            // act
+            RollMany(12, 10);
+
+            // assert
+            Assert.Equal(300, _g.ScoreGame());
+        }
+
 
         public void RollMany(int rolls, int pins)
         {

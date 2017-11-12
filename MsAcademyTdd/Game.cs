@@ -50,7 +50,7 @@
 
         public int StrikeBonus(int frameIndex)
         {
-            return rolls[frameIndex] + rolls[frameIndex + 1] + rolls[frameIndex + 2];
+            return rolls[frameIndex + 1] + rolls[frameIndex + 2];
         }
     }
 }
